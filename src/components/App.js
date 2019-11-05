@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import Signin from './Signin';
-import Signup from './Signup';
+import Signup from './Sign/Signup';
+import Signin from './Sign/Signin';
+import Game from './Game/Game';
 
 class App extends Component {
   render() {
-    const { createUser, signinUser, signoutUser } = this.props;
+    const { createUser, signinUser, signoutUser, hasDevice } = this.props;
     return (
       <div className='App'>
         <header className='App-header'></header>
@@ -20,9 +21,13 @@ class App extends Component {
           <Route
             exact
             path='/home'
-            render={() => (
-              <Signin signinUser={signinUser} signoutUser={signoutUser} />
-            )}
+            render={() =>
+              hasDevice ? (
+                <Game />
+              ) : (
+                <Signin signinUser={signinUser} signoutUser={signoutUser} />
+              )
+            }
           />
         </Switch>
       </div>

@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Wait from './Wait';
+import './Signin.scss';
 
 class Signin extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isWaitingDevice: false,
       email: '',
       password: ''
     };
@@ -22,6 +25,10 @@ class Signin extends Component {
 
     const userData = { email, password };
     signinUser(userData);
+
+    if (email && password) {
+      this.setState({ isWaitingDevice: true });
+    }
   };
 
   _handleSignout = () => {
@@ -30,7 +37,11 @@ class Signin extends Component {
   };
 
   render() {
-    return (
+    const { isWaitingDevice } = this.state;
+
+    return isWaitingDevice ? (
+      <Wait />
+    ) : (
       <>
         <h1 className='signin-header'>Sign in</h1>
         <div className='signin-box'>
@@ -52,15 +63,17 @@ class Signin extends Component {
               onChange={this._handleChange}
             />
             <Link to='/signup' className='signup-box'>
-              Sign up
+              Get in the boot camp
             </Link>
-            <input className='submit-box' type='submit' value='Sign in' />
+            <input className='submit-box' type='submit' value='Start!' />
           </form>
           <button
             className='signout-box'
             value='Sign out'
             onClick={this._handleSignout}
-          >Sign out</button>
+          >
+            Get off
+          </button>
         </div>
       </>
     );
