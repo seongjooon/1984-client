@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Signup.scss';
 
 class Signup extends Component {
   constructor(props) {
@@ -27,44 +28,40 @@ class Signup extends Component {
 
   render() {
     return (
-      <>
-        <h1 className='signin-header'>Sign up</h1>
-        <form onSubmit={this._handleSubmit}>
-          <div className='nickname-text'>Nickname</div>
+      <div className='Signup'>
+        <form className='signup-box' onSubmit={this._handleSubmit}>
+          <div className='signup-header'>New Pilot</div>
           <input
             className='input-nickname-box'
             type='text'
             name='nickname'
-            placeholder='입력해주세요.'
+            placeholder='Nickname..'
             onChange={this._handleChange}
           />
-          <div className='email-text'>Email</div>
           <input
             className='input-email-box'
             type='text'
             name='email'
-            placeholder='입력해주세요.'
+            placeholder='Email..'
             onChange={this._handleChange}
           />
-          <div className='password-text'>Password</div>
           <input
             className='input-password-box'
             type='password'
             name='password'
-            placeholder='입력해주세요.'
+            placeholder='Secret Code..'
             onChange={this._handleChange}
           />
-          <div className='password-text'>Check password</div>
           <input
             className='input-password-box'
             type='password'
             name='password-conf'
-            placeholder='입력해주세요.'
+            placeholder='Check Secret Code..'
             onChange={this._handleChange}
           />
-          <input className='submit-box' type='submit' value='Sign up' />
+          <input className='submit-box' type='submit' value='Get in' />
         </form>
-      </>
+      </div>
     );
   }
 }
