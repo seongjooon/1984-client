@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Wait from './Wait';
 import './Signin.scss';
 
 class Signin extends Component {
@@ -34,8 +33,10 @@ class Signin extends Component {
   render() {
     const { isWaitingDevice } = this.state;
 
-    return isWaitingDevice ? (
-      <Wait />
+    return !isWaitingDevice ? (
+      <div className='Wait'>
+        <div className='wait-text'>Waiting for a pilot . . . .</div>
+      </div>
     ) : (
       <div className='Signin'>
         <form className='signin-box' onSubmit={this._handleSubmit}>
