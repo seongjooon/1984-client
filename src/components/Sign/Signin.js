@@ -31,51 +31,35 @@ class Signin extends Component {
     }
   };
 
-  _handleSignout = () => {
-    const { signoutUser } = this.props;
-    signoutUser();
-  };
-
   render() {
     const { isWaitingDevice } = this.state;
 
     return isWaitingDevice ? (
       <Wait />
     ) : (
-      <>
-        <h1 className='signin-header'>Sign in</h1>
-        <div className='signin-box'>
-          <form onSubmit={this._handleSubmit}>
-            <div className='email-text'>Email</div>
-            <input
-              className='input-email-box'
-              type='text'
-              name='email'
-              placeholder='입력해주세요.'
-              onChange={this._handleChange}
-            />
-            <div className='password-text'>Password</div>
-            <input
-              className='input-password-box'
-              type='password'
-              name='password'
-              placeholder='입력해주세요.'
-              onChange={this._handleChange}
-            />
-            <Link to='/signup' className='signup-box'>
-              Get in the boot camp
-            </Link>
-            <input className='submit-box' type='submit' value='Start!' />
-          </form>
-          <button
-            className='signout-box'
-            value='Sign out'
-            onClick={this._handleSignout}
-          >
-            Get off
-          </button>
-        </div>
-      </>
+      <div className='Signin'>
+        <form className='signin-box' onSubmit={this._handleSubmit}>
+          <div className='main-text'>1984</div>
+          <input
+            className='email-box'
+            type='text'
+            name='email'
+            placeholder='Email Code..'
+            onChange={this._handleChange}
+          />
+          <input
+            className='password-box'
+            type='password'
+            name='password'
+            placeholder='Secret Code..'
+            onChange={this._handleChange}
+          />
+          <input className='submit-box' type='submit' value='Start!' />
+          <Link to='/signup' className='signup-box'>
+            Get in the boot camp
+          </Link>
+        </form>
+      </div>
     );
   }
 }
