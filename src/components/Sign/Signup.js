@@ -26,7 +26,7 @@ class Signup extends Component {
     signupUser(userData);
   };
 
-  render() {
+  render = () => {
     return (
       <div className='Signup'>
         <form className='signup-box' onSubmit={this._handleSubmit}>
@@ -35,35 +35,35 @@ class Signup extends Component {
             className='input-nickname-box'
             type='text'
             name='nickname'
-            placeholder='Nickname..'
+            placeholder='Type nickname'
             onChange={this._handleChange}
           />
           <input
             className='input-email-box'
             type='text'
             name='email'
-            placeholder='Email..'
+            placeholder='Type email'
             onChange={this._handleChange}
           />
           <input
             className='input-password-box'
             type='password'
             name='password'
-            placeholder='Secret Code..'
+            placeholder='Type secret code'
             onChange={this._handleChange}
           />
           <input
             className='input-password-box'
             type='password'
             name='password-conf'
-            placeholder='Check Secret Code..'
+            placeholder='Check secret code'
             onChange={this._handleChange}
           />
           <input className='submit-box' type='submit' value='Get in' />
         </form>
       </div>
     );
-  }
+  };
 }
 
 export default Signup;

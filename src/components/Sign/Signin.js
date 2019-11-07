@@ -30,10 +30,10 @@ class Signin extends Component {
     }
   };
 
-  render() {
+  render = () => {
     const { isWaitingDevice } = this.state;
 
-    return !isWaitingDevice ? (
+    return isWaitingDevice ? (
       <div className='Wait'>
         <div className='wait-text'>Waiting for a pilot . . . .</div>
       </div>
@@ -45,14 +45,14 @@ class Signin extends Component {
             className='email-box'
             type='text'
             name='email'
-            placeholder='Email Code..'
+            placeholder='Type email code'
             onChange={this._handleChange}
           />
           <input
             className='password-box'
             type='password'
             name='password'
-            placeholder='Secret Code..'
+            placeholder='Type secret code'
             onChange={this._handleChange}
           />
           <input className='submit-box' type='submit' value='Start!' />
@@ -62,7 +62,7 @@ class Signin extends Component {
         </form>
       </div>
     );
-  }
+  };
 }
 
 export default Signin;
