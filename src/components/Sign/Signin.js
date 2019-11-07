@@ -44,7 +44,7 @@ class Signin extends Component {
       setTimeout(() => {
         const checkIsMobileDevice = window.innerHeight < 460;
         this.props.onLoad(!checkIsMobileDevice);
-      }, 1000);
+      }, 800);
     }
   };
 
