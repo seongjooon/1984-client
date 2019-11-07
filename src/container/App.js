@@ -6,7 +6,7 @@ import { SERVER_URL } from '../constants/constant';
 import configureSocket, { connectDevice } from './socket';
 import { checkIsMobileDevice } from '../actions/index';
 
-export const socket = io.connect(SERVER_URL);
+export const socket = io.connect(SERVER_URL, { transports: ['websocket'] });
 
 const mapStateToProps = state => ({
   isMobileDevice: state.isMobileDevice,

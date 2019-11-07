@@ -2,8 +2,8 @@ import { socket } from './App';
 import { connectingDevice } from '../actions/index';
 
 const configureSocket = dispatch => {
-  socket.on('connecting message', hasDevice => {
-    dispatch(connectingDevice(hasDevice));
+  socket.on('connecting message', hasAnotherDevice => {
+    dispatch(connectingDevice(hasAnotherDevice));
   });
 
   socket.on('disconnect', () => {
