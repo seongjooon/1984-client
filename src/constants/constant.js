@@ -1,4 +1,4 @@
-const isMobileDvice = window.innerHeight < 460 || window.innerHeight < 460;
+const isMobileDvice = window.innerHeight < 460 || window.innerHeight < 600;
 
 export const SERVER_API = isMobileDvice
   ? 'http://192.168.0.51:4000'
