@@ -1,10 +1,10 @@
 import { WAIT_DEVICE } from '../constants/actioncTypes';
 import { initState } from './index';
 
-export const connectDeviceReducer = (state = initState.hasDevice, action) => {
+export const connectDeviceReducer = (state = initState.hasAnotherDevice, action) => {
   switch (action.type) {
     case WAIT_DEVICE:
-      return action.hasDevice;
+      return action.hasAnotherDevice;
     default:
       return state;
   }

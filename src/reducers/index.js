@@ -4,10 +4,10 @@ import { connectDeviceReducer } from './connectDeviceReducer';
 
 export const initState = {
   isMobileDevice: false,
-  hasDevice: false
+  hasAnotherDevice: false
 };
 
 export default combineReducers({
   isMobileDevice: checkIsMobileDeviceReducer,
-  hasDevice: connectDeviceReducer
+  hasAnotherDevice: connectDeviceReducer
 });

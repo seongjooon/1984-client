@@ -10,7 +10,7 @@ export const socket = io.connect(SERVER_URL);
 
 const mapStateToProps = state => ({
   isMobileDevice: state.isMobileDevice,
-  hasDevice: state.hasDevice
+  hasAnotherDevice: state.hasAnotherDevice
 });
 
 const mapDispatchToProps = dispatch => {

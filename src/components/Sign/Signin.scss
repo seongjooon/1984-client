@@ -74,6 +74,31 @@
   }
 }
 
+.block-mobile-screen {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 9%;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+  .reload-text {
+    font-size: 1.3rem;
+    font-weight: bold;
+    .rotating {
+      animation: rotating 0.5s linear infinite;
+    }
+    @keyframes rotating {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  }
+}
+
 .Wait {
   position: relative;
   width: 100%;
