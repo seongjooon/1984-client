@@ -52,17 +52,13 @@ class Signin extends Component {
     const { isRerenderClicked } = this.state;
     return (
       <div className='block-mobile-screen'>
-        <div className='reload-text'>
-          가로화면에서 <br />
-          <img
-            className={`reload-button ${isRerenderClicked ? 'rotating' : ''}`}
-            onClick={this._handleClick}
-            alt='reload button'
-            src='https://loading.io/spinners/flat-reload/index.flat-ajax-syncing-loading-icon.png'
-          />
-          <br />
-          눌러주세요.
-        </div>
+        <div className='rerender-text'>가로화면에서 눌러주세요</div>
+        <img
+          className={`rerender-button ${isRerenderClicked ? 'rotating' : ''}`}
+          onClick={this._handleClick}
+          alt='rerender button'
+          src='https://loading.io/spinners/flat-reload/index.flat-ajax-syncing-loading-icon.png'
+        />
       </div>
     );
   };
