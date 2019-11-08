@@ -13,7 +13,9 @@ class App extends Component {
       createUser,
       signinUser,
       signoutUser,
-      hasAnotherDevice
+      hasAnotherDevice,
+      clickStartButton,
+      isGameStarted
     } = this.props;
 
     return (
@@ -30,7 +32,12 @@ class App extends Component {
             path='/home'
             render={() =>
               hasAnotherDevice ? (
-                <Game isMobileDevice={isMobileDevice} />
+                <Game
+                  onLoad={onLoad}
+                  onClickStartButton={clickStartButton}
+                  isMobileDevice={isMobileDevice}
+                  isGameStarted={isGameStarted}
+                />
               ) : (
                 <Signin
                   onLoad={onLoad}

@@ -52,7 +52,7 @@ class Signin extends Component {
     const { isRerenderClicked } = this.state;
     return (
       <div className='block-mobile-screen'>
-        <div className='rerender-text'>가로화면에서 눌러주세요</div>
+        <div className='rerender-text'>가로모드에서 눌러주세요</div>
         <img
           className={`rerender-button ${isRerenderClicked ? 'rotating' : ''}`}
           onClick={this._handleClick}

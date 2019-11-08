@@ -3,14 +3,15 @@ import App from '../components/App';
 import { createUserAPI, signinUserAPI, signoutUserAPI } from '../Api/postApi';
 import io from 'socket.io-client';
 import { SERVER_URL } from '../constants/constant';
-import configureSocket, { connectDevice } from './socket';
+import configureSocket, { connectDevice, startGame } from './socket';
 import { checkIsMobileDevice } from '../actions/index';
 
 export const socket = io.connect(SERVER_URL, { transports: ['websocket'] });
 
 const mapStateToProps = state => ({
   isMobileDevice: state.isMobileDevice,
-  hasAnotherDevice: state.hasAnotherDevice
+  hasAnotherDevice: state.hasAnotherDevice,
+  isGameStarted: state.isGameStarted
 });
 
 const mapDispatchToProps = dispatch => {
@@ -35,6 +36,9 @@ const mapDispatchToProps = dispatch => {
       signoutUserAPI()
         .then(res => console.log(res))
         .catch(err => console.log(err));
+    },
+    clickStartButton: isClicked => {
+      startGame(isClicked);
     }
   };
 };
