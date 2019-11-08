@@ -6,6 +6,7 @@ class Signin extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      showBlockScreen: true,
       isRerenderClicked: false,
       isWaitingDevice: false,
       email: '',
@@ -16,6 +17,7 @@ class Signin extends Component {
   componentDidMount = () => {
     const checkIsMobileDevice = window.innerWidth < 460;
     this.props.onLoad(checkIsMobileDevice);
+    this.setState({ showBlockScreen: checkIsMobileDevice });
   };
 
   _handleChange = ev => {
@@ -37,15 +39,11 @@ class Signin extends Component {
   };
 
   _handleClick = () => {
-    const { isMobileDevice } = this.props;
     this.setState({ isRerenderClicked: true });
-
-    if (isMobileDevice) {
-      setTimeout(() => {
-        const checkIsMobileDevice = window.innerHeight < 460;
-        this.props.onLoad(!checkIsMobileDevice);
-      }, 800);
-    }
+    setTimeout(() => {
+      const checkIsMobileDevice = window.innerHeight > 460;
+      this.setState({ showBlockScreen: checkIsMobileDevice });
+    }, 800);
   };
 
   _showBolckMobileScreen = () => {
@@ -65,13 +63,13 @@ class Signin extends Component {
 
   render = () => {
     const { isMobileDevice } = this.props;
-    const { isWaitingDevice } = this.state;
+    const { isWaitingDevice, showBlockScreen } = this.state;
 
     return isWaitingDevice ? (
       <div className='Wait'>
         <div className='wait-text'>Waiting for a pilot . . . .</div>
       </div>
-    ) : isMobileDevice ? (
+    ) : showBlockScreen ? (
       this._showBolckMobileScreen()
     ) : (
       <div className='Signin'>
@@ -92,7 +90,7 @@ class Signin extends Component {
             onChange={this._handleChange}
           />
           <input className='submit-box' type='submit' value='Start!' />
-          {isMobileDevice && (
+          {!isMobileDevice && (
             <Link to='/signup' className='signup-box'>
               Get in the boot camp
             </Link>
