@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Game.scss';
+import GameMobileView from '../Mobile/GameMobileView';
 
 class Game extends Component {
   _handleClick = () => {
@@ -17,10 +18,7 @@ class Game extends Component {
       <div className='Game'>
         {isGameStarted ? (
           isMobileDevice ? (
-            <div className='airplane-handler'>
-              <div className='left-button'>left</div>
-              <div className='right-button'>right</div>
-            </div>
+            <GameMobileView />
           ) : (
             <div>WEB</div>
           )
