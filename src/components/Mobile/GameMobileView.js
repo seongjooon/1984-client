@@ -10,8 +10,11 @@ class GameMobileView extends Component {
   }
 
   _handleClick = direction => {
+    const { onClickDirectionButton } = this.props;
+    onClickDirectionButton(direction);
+
     const speech = new SpeechSynthesisUtterance();
-    speech.text = direction === 'Left' ? 'left' : 'right';
+    speech.text = direction === 'Left' ? '왼쪽' : '오른쪽';
     speech.volume = 1;
     speech.rate = 1.3;
     speech.pitch = 1;

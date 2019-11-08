@@ -15,7 +15,8 @@ class App extends Component {
       signoutUser,
       hasAnotherDevice,
       clickStartButton,
-      isGameStarted
+      isGameStarted,
+      clickDirectionButton
     } = this.props;
 
     return (
@@ -37,6 +38,7 @@ class App extends Component {
                   onClickStartButton={clickStartButton}
                   isMobileDevice={isMobileDevice}
                   isGameStarted={isGameStarted}
+                  clickDirectionButton={clickDirectionButton}
                 />
               ) : (
                 <Signin

@@ -3,7 +3,11 @@ import App from '../components/App';
 import { createUserAPI, signinUserAPI, signoutUserAPI } from '../Api/postApi';
 import io from 'socket.io-client';
 import { SERVER_URL } from '../constants/constant';
-import configureSocket, { connectDevice, startGame } from './socket';
+import configureSocket, {
+  connectDevice,
+  startGame,
+  moveAirplane
+} from './socket';
 import { checkIsMobileDevice } from '../actions/index';
 
 export const socket = io.connect(SERVER_URL, { transports: ['websocket'] });
@@ -39,6 +43,9 @@ const mapDispatchToProps = dispatch => {
     },
     clickStartButton: isClicked => {
       startGame(isClicked);
+    },
+    clickDirectionButton: direction => {
+      moveAirplane(direction);
     }
   };
 };
