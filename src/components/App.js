@@ -16,7 +16,8 @@ class App extends Component {
       hasAnotherDevice,
       clickStartButton,
       isGameStarted,
-      clickDirectionButton
+      clickDirectionButton,
+      airplanePosition
     } = this.props;
 
     return (
@@ -39,6 +40,7 @@ class App extends Component {
                   isMobileDevice={isMobileDevice}
                   isGameStarted={isGameStarted}
                   clickDirectionButton={clickDirectionButton}
+                  airplanePosition={airplanePosition}
                 />
               ) : (
                 <Signin

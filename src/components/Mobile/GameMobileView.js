@@ -35,13 +35,13 @@ class GameMobileView extends Component {
       <div className='airplane-handler'>
         <div
           className={`left-button ${isLeftDirectionClicked ? 'flicker' : ''}`}
-          onClick={() => this._handleClick('Left')}
+          onMouseDown={() => this._handleClick('Left')}
         >
           L
         </div>
         <div
           className={`right-button ${isRightDirectionClicked ? 'flicker' : ''}`}
-          onClick={() => this._handleClick('Right')}
+          onMouseDown={() => this._handleClick('Right')}
         >
           R
         </div>

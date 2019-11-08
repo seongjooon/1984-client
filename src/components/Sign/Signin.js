@@ -15,7 +15,8 @@ class Signin extends Component {
   }
 
   componentDidMount = () => {
-    const checkIsMobileDevice = window.innerWidth < 460;
+    const checkIsMobileDevice =
+      window.innerWidth < 460;
     this.props.onLoad(checkIsMobileDevice);
     this.setState({ showBlockScreen: checkIsMobileDevice });
   };

@@ -13,7 +13,12 @@ class Game extends Component {
   };
 
   render() {
-    const { isMobileDevice, isGameStarted, clickDirectionButton } = this.props;
+    const {
+      isMobileDevice,
+      isGameStarted,
+      clickDirectionButton,
+      airplanePosition
+    } = this.props;
 
     return (
       <div className='Game'>
@@ -21,7 +26,7 @@ class Game extends Component {
           isMobileDevice ? (
             <GameMobileView onClickDirectionButton={clickDirectionButton} />
           ) : (
-            <GameWebView />
+            <GameWebView airplanePosition={airplanePosition} />
           )
         ) : (
           <img

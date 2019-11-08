@@ -15,7 +15,8 @@ export const socket = io.connect(SERVER_URL, { transports: ['websocket'] });
 const mapStateToProps = state => ({
   isMobileDevice: state.isMobileDevice,
   hasAnotherDevice: state.hasAnotherDevice,
-  isGameStarted: state.isGameStarted
+  isGameStarted: state.isGameStarted,
+  airplanePosition: state.airplanePosition
 });
 
 const mapDispatchToProps = dispatch => {
