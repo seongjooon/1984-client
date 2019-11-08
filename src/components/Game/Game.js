@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Game.scss';
 import GameMobileView from '../Mobile/GameMobileView';
+import GameWebView from '../Web/GameWebView';
 
 class Game extends Component {
   _handleClick = () => {
@@ -20,7 +21,7 @@ class Game extends Component {
           isMobileDevice ? (
             <GameMobileView onClickDirectionButton={clickDirectionButton} />
           ) : (
-            <div>WEB</div>
+            <GameWebView />
           )
         ) : (
           <img
