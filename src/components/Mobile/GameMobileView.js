@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './GameMobileView.scss';
 
 class GameMobileView extends Component {
   constructor() {
