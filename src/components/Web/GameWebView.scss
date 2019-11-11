@@ -6,11 +6,32 @@
   height: 100%;
   background: url('https://thumbs.gfycat.com/TestySophisticatedIndianpangolin-size_restricted.gif')
     no-repeat center / cover;
+  .main-logo {
+    align-self: flex-start;
+    padding: 15px 20px 0;
+    font-size: 5rem;
+    font-weight: bold;
+    color: #00f303;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
   .main-viewer {
     display: flex;
     width: 100vh;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
+    .obstacle-unit {
+      width: 200px;
+      height: 100%;
+      // border: 1px solid red;
+      .obstacle-controller {
+        width: 100%;
+        // border: 1px solid blue;
+      }
+      .git-kraken {
+        font-size: 200px;
+      }
+    }
     .airplane-area {
       display: flex;
       align-self: flex-end;
@@ -21,6 +42,18 @@
         font-size: 5rem;
         color: #00f303;
       }
+    }
+  }
+  .count-up-box {
+    align-self: flex-start;
+    width: 262px;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.8);
+    .count-up {
+      float: right;
+      padding: 15px 20px 0;
+      font-size: 4rem;
+      color: white;
     }
   }
 }
