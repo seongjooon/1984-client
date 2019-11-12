@@ -75,7 +75,7 @@ class Signin extends Component {
     ) : (
       <div className='Signin'>
         <form className='signin-box' onSubmit={this._handleSubmit}>
-          <div className='main-text'>1984</div>
+          <div className='main-logo'>1984</div>
           <input
             className='email-box'
             type='text'
