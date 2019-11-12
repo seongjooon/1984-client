@@ -17,7 +17,7 @@ class Game extends Component {
       isMobileDevice,
       isGameStarted,
       clickDirectionButton,
-      airplanePosition
+      airplane
     } = this.props;
 
     return (
@@ -26,7 +26,7 @@ class Game extends Component {
           isMobileDevice ? (
             <GameMobileView onClickDirectionButton={clickDirectionButton} />
           ) : (
-            <GameWebView airplanePosition={airplanePosition} />
+            <GameWebView airplane={airplane} />
           )
         ) : (
           <img

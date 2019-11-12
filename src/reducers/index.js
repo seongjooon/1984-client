@@ -8,12 +8,18 @@ export const initState = {
   isMobileDevice: false,
   hasAnotherDevice: false,
   isGameStarted: false,
-  airplanePosition: 46
+  airplane: {
+    color: 'red',
+    x: 46,
+    y: 90,
+    width: 8,
+    height: 7
+  }
 };
 
 export default combineReducers({
   isMobileDevice: checkIsMobileDeviceReducer,
   hasAnotherDevice: connectDeviceReducer,
   isGameStarted: gameStartReducer,
-  airplanePosition: moveAirplaneReducer
+  airplane: moveAirplaneReducer
 });

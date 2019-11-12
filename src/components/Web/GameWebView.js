@@ -1,57 +1,62 @@
 import React, { Component } from 'react';
 import './GameWebView.scss';
+// import Obstacle from './Obstacle';
 import CountUp from 'react-countup';
-import { TiPlaneOutline } from 'react-icons/ti';
-import { FaGitkraken } from 'react-icons/fa';
-import { FaEarlybirds } from 'react-icons/fa';
+// import { TiPlaneOutline } from 'react-icons/ti';
 
 class GameWebView extends Component {
-  constructor() {
-    super();
-    this.state = { obstacleController: 0 };
+  constructor(props) {
+    super(props);
+    this.canvasRef = React.createRef();
+    this.ctx = null;
   }
 
-  _fallingObstacle = obbstacleUnit => {
-    let { obstacleController } = this.state;
-    if (obstacleController <= 938) {
-      setInterval(() => {
-        obstacleController += 100;
-        this.setState({ obstacleController });
-      }, 1500);
-    }
+  componentDidMount = () => {
+    const { airplane } = this.props;
+    this.ctx = this.canvasRef.current.getContext('2d');
+    this._updateGameArea(airplane);
+    // const { airplane } = this.props;
+    // setInterval(() => {
+    //   this._updateGameArea(airplane);
+    // }, 20);
+  };
 
-    return (
-      <div className='obstacle-unit'>
-        <div
-          className='obstacle-controller'
-          style={{ height: `${obstacleController}px` }}
-        ></div>
-        {obbstacleUnit}
-      </div>
-    );
+  componentDidUpdate() {
+    const { airplane } = this.props;
+    this._updateGameArea(airplane);
+  }
+
+  _clear = () => {
+    this.ctx.clearRect(0, 0, 100, 500);
+  };
+
+  _update(obstacle) {
+    this.ctx.fillStyle = obstacle.color;
+
+    this.ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
+  }
+
+  _updateGameArea = airplane => {
+    this._clear();
+    this._update(airplane);
   };
 
   _countUpNumber = () => {
-    return <CountUp className='count-up' start={0} end={1000} duration={100} />;
+    return (
+      <CountUp className='count-up' start={0} end={10000} duration={8000} />
+    );
   };
 
   render = () => {
-    const { airplanePosition } = this.props;
-
     return (
       <div className='web-game-view'>
         <div className='main-logo'>1984</div>
-        <div className='main-viewer'>
-          {this._fallingObstacle(<FaGitkraken className='git-kraken' />)}
-          {this._fallingObstacle(<FaEarlybirds className='git-kraken' />)}
-          <div className='airplane-area'>
-            <div
-              className='airplane-controller'
-              style={{ width: `${airplanePosition}%` }}
-            ></div>
-            <TiPlaneOutline className='airplane' />
-          </div>
-        </div>
+        <canvas
+          className='main-viewer'
+          ref={this.canvasRef}
+          width={'100%'}
+          height={'100%'}
+        />
         <div className='count-up-box'>{this._countUpNumber()}</div>
       </div>
     );

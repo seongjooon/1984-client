@@ -16,7 +16,8 @@ const mapStateToProps = state => ({
   isMobileDevice: state.isMobileDevice,
   hasAnotherDevice: state.hasAnotherDevice,
   isGameStarted: state.isGameStarted,
-  airplanePosition: state.airplanePosition
+  // airplaneDirection: state.airplaneDirection
+  airplane: state.airplane
 });
 
 const mapDispatchToProps = dispatch => {
