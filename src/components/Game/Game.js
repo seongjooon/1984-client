@@ -4,6 +4,15 @@ import GameMobileView from '../Mobile/GameMobileView';
 import GameWebView from '../Web/GameWebView';
 
 class Game extends Component {
+  componentDidMount() {
+    const { changeObstaclePosition } = this.props;
+
+    setInterval(() => {
+      console.log('interval');
+      changeObstaclePosition();
+    }, 2000);
+  }
+
   _handleClick = () => {
     const { onLoad, onClickStartButton } = this.props;
     const checkIsMobileDevice = window.innerHeight < 460;
@@ -17,16 +26,17 @@ class Game extends Component {
       isMobileDevice,
       isGameStarted,
       clickDirectionButton,
-      airplane
+      airplane,
+      obstacle
     } = this.props;
 
     return (
       <div className='Game'>
-        {isGameStarted ? (
+        {!isGameStarted ? (
           isMobileDevice ? (
             <GameMobileView onClickDirectionButton={clickDirectionButton} />
           ) : (
-            <GameWebView airplane={airplane} />
+            <GameWebView airplane={airplane} obstacle={obstacle} />
           )
         ) : (
           <img

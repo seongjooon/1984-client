@@ -1,72 +1,193 @@
-import React, { Component } from 'react';
-import './GameWebView.scss';
-import Obstacle from './Obstacle';
-import CountUp from 'react-countup';
-import { TiPlaneOutline } from 'react-icons/ti';
+// import React, { Component } from 'react';
+// import './GameWebView.scss';
+// // import Obstacle from './Obstacle';
+// import CountUp from 'react-countup';
+// // import { TiPlaneOutline } from 'react-icons/ti';
 
-class GameWebView extends Component {
-  constructor() {
-    super();
-    this.state = { obstacles: [] };
-    this.obstaclesRef = React.createRef();
-  }
+// class GameWebView extends Component {
+//   constructor(props) {
+//     super(props);
+//     this.canvasRef = React.createRef();
+//     this.ctx = null;
+//     this.interval = null;
+//   }
 
-  componentDidMount = () => {
-    // setInterval(() => {
-    const { obstacles } = this.state;
-    this.setState({
-      obstacles: obstacles.concat([<Obstacle remove={this._removeObstacle} />])
-    });
-    // }, 1000);
-  };
+//   componentDidMount() {
+//     const { airplane, obstacle } = this.props;
+//     this.ctx = this.canvasRef.current.getContext('2d');
+//     // this.interval = setInterval(() => {
+//       this._updateGameArea([airplane, obstacle]);
+//     // }, 20);
+//   }
 
-  _removeObstacle = () => {
-    const { obstacles } = this.state;
-    const obstacleBox = this.obstaclesRef.current;
+//   componentDidUpdate() {
+//     const { airplane } = this.props;
+//     this._updateGameArea(airplane);
+//   }
 
-    obstacleBox.remove();
-    this.setState({
-      obstacles: obstacles.concat([<Obstacle remove={this._removeObstacle} />])
-    });
-  };
+//   _clear = () => {
+//     this.ctx.clearRect(0, 0, 100, 500);
+//   };
 
-  _countUpNumber = () => {
-    return (
-      <CountUp className='count-up' start={0} end={10000} duration={8000} />
-    );
-  };
+//   _update = unit => {
+//     this.ctx.fillStyle = unit.color;
 
-  render = () => {
-    const { airplanePosition } = this.props;
-    const { obstacles } = this.state;
+//     this.ctx.fillRect(unit.x, unit.y, unit.width, unit.height);
+//   };
 
-    return (
-      <div className='web-game-view'>
-        <div className='main-logo'>1984</div>
-        <div className='main-viewer'>
-          <div className='obstacle-box'>
-            {obstacles.map((obs, index) => (
-              <div
-                className='obstacle-unit'
-                ref={this.obstaclesRef}
-                key={index}
-              >
-                {obs}
-              </div>
-            ))}
-          </div>
-          <div className='airplane-area'>
-            <div
-              className='airplane-controller'
-              style={{ width: `${airplanePosition}%` }}
-            ></div>
-            <TiPlaneOutline className='airplane' />
-          </div>
-        </div>
-        <div className='count-up-box'>{this._countUpNumber()}</div>
-      </div>
-    );
-  };
-}
+//   _crashWith = unitList => {
+//     const myleft = unitList[0].x;
+//     const myright = unitList[0].x + unitList[0].width;
+//     const mytop = unitList[0].y;
+//     const mybottom = unitList[0].y + unitList[0].height;
+//     const otherleft = unitList[1].x;
+//     const otherright = unitList[1].x + unitList[1].width;
+//     const othertop = unitList[1].y;
+//     const otherbottom = unitList[1].y + unitList[1].height;
+//     let crash = true;
+//     if (
+//       mybottom < othertop ||
+//       mytop > otherbottom ||
+//       myright < otherleft ||
+//       myleft > otherright
+//     ) {
+//       crash = false;
+//     }
+//     return crash;
+//   };
 
-export default GameWebView;
+//   _stopGame = () => {
+//     clearInterval(this.interval);
+//   };
+
+//   _updateGameArea = unitList => {
+//     // if (this._crashWith(unitList)) {
+//     //   this._stopGame();
+//     // } else {
+//       this._clear();
+//       for (let i = 0; i < unitList.length; i++) {
+//         this._update(unitList[i]);
+//       }
+//     // }
+//   };
+
+//   _countUpNumber = () => {
+//     return (
+//       <CountUp className='count-up' start={0} end={10000} duration={8000} />
+//     );
+//   };
+
+//   render = () => {
+//     return (
+//       <div className='web-game-view'>
+//         <div className='main-logo'>1984</div>
+//         <canvas
+//           className='main-viewer'
+//           ref={this.canvasRef}
+//           width={'100%'}
+//           height={'100%'}
+//         />
+//         <div className='count-up-box'>{this._countUpNumber()}</div>
+//       </div>
+//     );
+//   };
+// }
+
+// export default GameWebView;
+
+// import React, { Component } from 'react';
+// import './GameWebView.scss';
+// // import Obstacle from './Obstacle';
+// import CountUp from 'react-countup';
+// // import { TiPlaneOutline } from 'react-icons/ti';
+
+// class GameWebView extends Component {
+//   constructor(props) {
+//     super(props);
+//     this.canvasRef = React.createRef();
+//     this.ctx = null;
+//     this.interval = null;
+//   }
+
+//   componentDidMount() {
+//     const { airplane, obstacle } = this.props;
+//     this.ctx = this.canvasRef.current.getContext('2d');
+//     // this.interval = setInterval(() => {
+//       this._updateGameArea([airplane, obstacle]);
+//     // }, 20);
+//   }
+
+//   componentDidUpdate() {
+//     const { airplane } = this.props;
+//     this._updateGameArea(airplane);
+//   }
+
+//   _clear = () => {
+//     this.ctx.clearRect(0, 0, 100, 500);
+//   };
+
+//   _update = unit => {
+//     this.ctx.fillStyle = unit.color;
+
+//     this.ctx.fillRect(unit.x, unit.y, unit.width, unit.height);
+//   };
+
+//   _crashWith = unitList => {
+//     const myleft = unitList[0].x;
+//     const myright = unitList[0].x + unitList[0].width;
+//     const mytop = unitList[0].y;
+//     const mybottom = unitList[0].y + unitList[0].height;
+//     const otherleft = unitList[1].x;
+//     const otherright = unitList[1].x + unitList[1].width;
+//     const othertop = unitList[1].y;
+//     const otherbottom = unitList[1].y + unitList[1].height;
+//     let crash = true;
+//     if (
+//       mybottom < othertop ||
+//       mytop > otherbottom ||
+//       myright < otherleft ||
+//       myleft > otherright
+//     ) {
+//       crash = false;
+//     }
+//     return crash;
+//   };
+
+//   _stopGame = () => {
+//     clearInterval(this.interval);
+//   };
+
+//   _updateGameArea = unitList => {
+//     // if (this._crashWith(unitList)) {
+//     //   this._stopGame();
+//     // } else {
+//       this._clear();
+//       for (let i = 0; i < unitList.length; i++) {
+//         this._update(unitList[i]);
+//       }
+//     // }
+//   };
+
+//   _countUpNumber = () => {
+//     return (
+//       <CountUp className='count-up' start={0} end={10000} duration={8000} />
+//     );
+//   };
+
+//   render = () => {
+//     return (
+//       <div className='web-game-view'>
+//         <div className='main-logo'>1984</div>
+//         <canvas
+//           className='main-viewer'
+//           ref={this.canvasRef}
+//           width={'100%'}
+//           height={'100%'}
+//         />
+//         <div className='count-up-box'>{this._countUpNumber()}</div>
+//       </div>
+//     );
+//   };
+// }
+
+// export default GameWebView;

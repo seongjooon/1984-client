@@ -2,7 +2,8 @@ import {
   WAIT_DEVICE,
   IS_MOBILE_DEVICE,
   IS_GAME_START,
-  AIRPLANE_MOVING
+  AIRPLANE_MOVING,
+  OBSTACLE_MOVING
 } from '../constants/actioncTypes';
 
 export const connectDeviceAction = hasAnotherDevice => ({
@@ -23,4 +24,9 @@ export const startGameAction = isStart => ({
 export const moveAirplaneAction = direction => ({
   type: AIRPLANE_MOVING,
   direction
+});
+
+export const moveObstacleAction = position => ({
+  type: OBSTACLE_MOVING,
+  position
 });

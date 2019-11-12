@@ -8,7 +8,7 @@ import configureSocket, {
   startGame,
   moveAirplane
 } from './socket';
-import { checkIsMobileDevice } from '../actions/index';
+import { checkIsMobileDevice, moveObstacleAction } from '../actions/index';
 
 export const socket = io.connect(SERVER_URL, { transports: ['websocket'] });
 
@@ -16,8 +16,8 @@ const mapStateToProps = state => ({
   isMobileDevice: state.isMobileDevice,
   hasAnotherDevice: state.hasAnotherDevice,
   isGameStarted: state.isGameStarted,
-  // airplaneDirection: state.airplaneDirection
-  airplane: state.airplane
+  airplane: state.airplane,
+  obstacle: state.obstacle
 });
 
 const mapDispatchToProps = dispatch => {
@@ -48,6 +48,10 @@ const mapDispatchToProps = dispatch => {
     },
     clickDirectionButton: direction => {
       moveAirplane(direction);
+    },
+    changeObstaclePosition: position => {
+      console.log('change obstacle position!');
+      dispatch(moveObstacleAction(position));
     }
   };
 };

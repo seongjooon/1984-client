@@ -17,7 +17,9 @@ class App extends Component {
       clickStartButton,
       isGameStarted,
       clickDirectionButton,
-      airplane
+      airplane,
+      obstacle,
+      changeObstaclePosition
     } = this.props;
 
     return (
@@ -33,7 +35,7 @@ class App extends Component {
             exact
             path='/home'
             render={() =>
-              hasAnotherDevice ? (
+              !hasAnotherDevice ? (
                 <Game
                   onLoad={onLoad}
                   onClickStartButton={clickStartButton}
@@ -41,6 +43,8 @@ class App extends Component {
                   isGameStarted={isGameStarted}
                   clickDirectionButton={clickDirectionButton}
                   airplane={airplane}
+                  obstacle={obstacle}
+                  changeObstaclePosition={changeObstaclePosition}
                 />
               ) : (
                 <Signin
