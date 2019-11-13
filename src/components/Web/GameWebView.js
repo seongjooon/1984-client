@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './GameWebView.scss';
 import CountUp from 'react-countup';
+import Modal from './Modal';
 
 class GameWebView extends Component {
   constructor(props) {
@@ -8,7 +9,7 @@ class GameWebView extends Component {
     this.canvasRef = React.createRef();
     this.scoreRef = React.createRef();
     this.ctx = null;
-    this.state = { score: 0 };
+    this.state = { score: 0, isModalOpen: false };
   }
 
   componentDidMount() {
@@ -60,7 +61,7 @@ class GameWebView extends Component {
     const score = this.scoreRef.current.firstElementChild.innerText;
 
     gameOver();
-    alert(`ur score ${score}`);
+    this.setState({ score, isModalOpen: true });
   };
 
   _updateGame = unitList => {
@@ -78,6 +79,8 @@ class GameWebView extends Component {
   };
 
   render = () => {
+    const { score, isModalOpen } = this.state;
+
     return (
       <div className="web-game-view">
         <div className="main-logo">1984</div>
@@ -90,6 +93,7 @@ class GameWebView extends Component {
         <div className="count-up-box" ref={this.scoreRef}>
           <CountUp className="count-up" start={0} end={10000} duration={8000} />
         </div>
+        {!isModalOpen && <Modal score={score} />}
       </div>
     );
   };

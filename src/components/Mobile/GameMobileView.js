@@ -40,7 +40,6 @@ class GameMobileView extends Component {
 
   _handleResultButtonClick = direction => {
     this._getSelectedVoice(direction, 'result');
-
     this.setState({ [`is${direction}ButtonClicked`]: true });
     setTimeout(
       () => this.setState({ [`is${direction}ButtonClicked`]: false }),
