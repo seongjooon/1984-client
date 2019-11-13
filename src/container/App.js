@@ -6,7 +6,8 @@ import { SERVER_URL } from '../constants/constant';
 import configureSocket, {
   connectDevice,
   startGame,
-  moveAirplane
+  moveAirplane,
+  stopGame
 } from './socket';
 import { checkIsMobileDevice, moveObstacleAction } from '../actions/index';
 
@@ -17,7 +18,8 @@ const mapStateToProps = state => ({
   hasAnotherDevice: state.hasAnotherDevice,
   isGameStarted: state.isGameStarted,
   airplane: state.airplane,
-  obstacles: state.obstacles
+  obstacles: state.obstacles,
+  isGameOver: state.isGameOver
 });
 
 const mapDispatchToProps = dispatch => {
@@ -51,6 +53,9 @@ const mapDispatchToProps = dispatch => {
     },
     changeObstaclePosition: () => {
       dispatch(moveObstacleAction());
+    },
+    gameOver: () => {
+      stopGame();
     }
   };
 };

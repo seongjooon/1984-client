@@ -1,8 +1,8 @@
-.airplane-handler {
+.mobile-buttons {
   display: flex;
   width: 100%;
   height: 100%;
-  .left-button {
+  .button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,17 +10,20 @@
     height: 100%;
     font-size: 4rem;
     font-weight: bold;
+  }
+  .left-button {
     background-color: tomato;
   }
   .right-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-    height: 100%;
-    font-size: 4rem;
-    font-weight: bold;
     background-color: skyblue;
+  }
+  .restart-button {
+    text-decoration: none;
+    color: white;
+    background-color: black;
+  }
+  .ranking-button {
+    background-color: darkgray;
   }
   .flicker {
     font-size: 6rem;

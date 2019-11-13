@@ -24,16 +24,25 @@ class Game extends Component {
       isGameStarted,
       clickDirectionButton,
       airplane,
-      obstacles
+      obstacles,
+      gameOver,
+      isGameOver
     } = this.props;
 
     return (
       <div className="Game">
         {isGameStarted ? (
           isMobileDevice ? (
-            <GameMobileView onClickDirectionButton={clickDirectionButton} />
+            <GameMobileView
+              onClickDirectionButton={clickDirectionButton}
+              isGameOver={isGameOver}
+            />
           ) : (
-            <GameWebView airplane={airplane} obstacles={obstacles} />
+            <GameWebView
+              airplane={airplane}
+              obstacles={obstacles}
+              gameOver={gameOver}
+            />
           )
         ) : (
           <img

@@ -19,21 +19,23 @@ class App extends Component {
       clickDirectionButton,
       airplane,
       obstacles,
-      changeObstaclePosition
+      changeObstaclePosition,
+      gameOver,
+      isGameOver
     } = this.props;
 
     return (
-      <div className='App'>
+      <div className="App">
         <Switch>
-          <Route exact path='/' render={() => <Redirect to='/home' />} />
+          <Route exact path="/" render={() => <Redirect to="/home" />} />
           <Route
             exact
-            path='/signup'
+            path="/signup"
             render={() => <Signup signupUser={createUser} />}
           />
           <Route
             exact
-            path='/home'
+            path="/home"
             render={() =>
               hasAnotherDevice ? (
                 <Game
@@ -45,6 +47,8 @@ class App extends Component {
                   airplane={airplane}
                   obstacles={obstacles}
                   changeObstaclePosition={changeObstaclePosition}
+                  gameOver={gameOver}
+                  isGameOver={isGameOver}
                 />
               ) : (
                 <Signin

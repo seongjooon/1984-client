@@ -4,12 +4,14 @@ import { connectDeviceReducer } from './connectDeviceReducer';
 import { gameStartReducer } from './gameStartReducer';
 import { moveAirplaneReducer } from './moveAirplaneReducer';
 import { moveObstacleReducer } from './moveObstacleReducer';
+import { gameOverReducer } from './gameOverReducer';
 import { OBSTACLE_LIST } from '../constants/constant';
 
 export const initState = {
   isMobileDevice: false,
   hasAnotherDevice: false,
   isGameStarted: false,
+  isGameOver: false,
   airplane: {
     color: 'red',
     x: 46,
@@ -25,5 +27,6 @@ export default combineReducers({
   hasAnotherDevice: connectDeviceReducer,
   isGameStarted: gameStartReducer,
   airplane: moveAirplaneReducer,
-  obstacles: moveObstacleReducer
+  obstacles: moveObstacleReducer,
+  isGameOver: gameOverReducer
 });

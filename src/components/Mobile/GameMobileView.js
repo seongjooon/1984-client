@@ -1,50 +1,99 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './GameMobileView.scss';
 
 class GameMobileView extends Component {
   constructor() {
     super();
     this.state = {
-      isLeftDirectionClicked: false,
-      isRightDirectionClicked: false
+      isLeftButtonClicked: false,
+      isRightButtonClicked: false
     };
   }
 
-  _handleClick = direction => {
+  _getSelectedVoice = (direction, selectedButton) => {
+    const speech = new SpeechSynthesisUtterance();
+    speech.volume = 1;
+    speech.rate = 1.35;
+    speech.pitch = 1;
+    if (selectedButton === 'direction') {
+      speech.text = direction === 'Left' ? 'left' : 'right';
+    } else if (selectedButton === 'result') {
+      speech.text = direction === 'Left' ? 'restart' : 'ranking';
+    }
+
+    window.speechSynthesis.speak(speech);
+  };
+
+  _handleDirectionButtonClick = direction => {
     const { onClickDirectionButton } = this.props;
     onClickDirectionButton(direction);
 
-    const speech = new SpeechSynthesisUtterance();
-    speech.text = direction === 'Left' ? '왼쪽' : '오른쪽';
-    speech.volume = 1;
-    speech.rate = 1.3;
-    speech.pitch = 1;
+    this._getSelectedVoice(direction, 'direction');
 
-    window.speechSynthesis.speak(speech);
-
-    this.setState({ [`is${direction}DirectionClicked`]: true });
+    this.setState({ [`is${direction}ButtonClicked`]: true });
     setTimeout(
-      () => this.setState({ [`is${direction}DirectionClicked`]: false }),
+      () => this.setState({ [`is${direction}ButtonClicked`]: false }),
+      70
+    );
+  };
+
+  _handleResultButtonClick = direction => {
+    this._getSelectedVoice(direction, 'result');
+
+    this.setState({ [`is${direction}ButtonClicked`]: true });
+    setTimeout(
+      () => this.setState({ [`is${direction}ButtonClicked`]: false }),
       70
     );
   };
 
   render = () => {
-    const { isLeftDirectionClicked, isRightDirectionClicked } = this.state;
+    const { isGameOver } = this.props;
+    const { isLeftButtonClicked, isRightButtonClicked } = this.state;
+
     return (
-      <div className='airplane-handler'>
-        <div
-          className={`left-button ${isLeftDirectionClicked ? 'flicker' : ''}`}
-          onMouseDown={() => this._handleClick('Left')}
-        >
-          L
-        </div>
-        <div
-          className={`right-button ${isRightDirectionClicked ? 'flicker' : ''}`}
-          onMouseDown={() => this._handleClick('Right')}
-        >
-          R
-        </div>
+      <div className="mobile-buttons">
+        {!isGameOver ? (
+          <>
+            <Link
+              to="/home"
+              className={`button restart-button ${
+                isLeftButtonClicked ? 'flicker' : ''
+              }`}
+              onMouseDown={() => this._handleResultButtonClick('Left')}
+            >
+              Restart
+            </Link>
+            <div
+              className={`button ranking-button ${
+                isRightButtonClicked ? 'flicker' : ''
+              }`}
+              onMouseDown={() => this._handleResultButtonClick('Right')}
+            >
+              Ranking
+            </div>{' '}
+          </>
+        ) : (
+          <>
+            <div
+              className={`button left-button ${
+                isLeftButtonClicked ? 'flicker' : ''
+              }`}
+              onMouseDown={() => this._handleDirectionButtonClick('Left')}
+            >
+              L
+            </div>
+            <div
+              className={`button right-button ${
+                isRightButtonClicked ? 'flicker' : ''
+              }`}
+              onMouseDown={() => this._handleDirectionButtonClick('Right')}
+            >
+              R
+            </div>
+          </>
+        )}
       </div>
     );
   };

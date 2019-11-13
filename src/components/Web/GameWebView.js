@@ -31,7 +31,6 @@ class GameWebView extends Component {
   _update = unit => {
     this.ctx.fillStyle = unit.color;
     this.ctx.fillRect(unit.x, unit.y, unit.width, unit.height);
-    // this.ctx.drawImage()
   };
 
   _crashWith = unitList => {
@@ -57,16 +56,20 @@ class GameWebView extends Component {
   };
 
   _stopGame = () => {
+    const { gameOver } = this.props;
     const score = this.scoreRef.current.firstElementChild.innerText;
+
+    gameOver();
     alert(`ur score ${score}`);
   };
 
   _updateGame = unitList => {
-    // for (let i = 1; i < unitList.length; i++) {
-    //   if (this._crashWith([unitList[0], unitList[i]])) {
-    //     this._stopGame();
-    //   }
-    // }
+    for (let i = 1; i < unitList.length; i++) {
+      if (this._crashWith([unitList[0], unitList[i]])) {
+        this._stopGame();
+        return;
+      }
+    }
     this._clearCanvas();
 
     for (let i = 0; i < unitList.length; i++) {

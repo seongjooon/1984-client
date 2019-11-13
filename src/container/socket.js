@@ -2,7 +2,8 @@ import { socket } from './App';
 import {
   connectDeviceAction,
   startGameAction,
-  moveAirplaneAction
+  moveAirplaneAction,
+  stopGameAction
 } from '../actions/index';
 
 export const connectDevice = token => socket.emit('connect device', token);
@@ -11,6 +12,8 @@ export const startGame = isClicked => socket.emit('start game', isClicked);
 
 export const moveAirplane = direction =>
   socket.emit('move airplane', direction);
+
+export const stopGame = () => socket.emit('game over');
 
 const configureSocket = dispatch => {
   socket.on('connecting message', hasAnotherDevice => {
@@ -23,6 +26,10 @@ const configureSocket = dispatch => {
 
   socket.on('airplane moving', direction => {
     dispatch(moveAirplaneAction(direction));
+  });
+
+  socket.on('game over', () => {
+    dispatch(stopGameAction());
   });
 
   socket.on('disconnect', () => {
