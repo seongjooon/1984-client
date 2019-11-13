@@ -35,7 +35,7 @@ class App extends Component {
             exact
             path='/home'
             render={() =>
-              !hasAnotherDevice ? (
+              hasAnotherDevice ? (
                 <Game
                   onLoad={onLoad}
                   onClickStartButton={clickStartButton}

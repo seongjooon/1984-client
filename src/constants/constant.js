@@ -8,4 +8,4 @@ export const SERVER_URL = isMobileDvice
   ? 'http://192.168.0.68:5000'
   : 'http://localhost:5000';
 
-export const FALLING_OBSTACLE = 4;
+export const FALLING_OBSTACLE = 3;

@@ -7,7 +7,7 @@ class Game extends Component {
   componentDidMount() {
     const { changeObstaclePosition } = this.props;
 
-    setInterval(changeObstaclePosition, 100);
+    setInterval(changeObstaclePosition, 50);
   }
 
   _handleClick = () => {
@@ -29,7 +29,7 @@ class Game extends Component {
 
     return (
       <div className="Game">
-        {!isGameStarted ? (
+        {isGameStarted ? (
           isMobileDevice ? (
             <GameMobileView onClickDirectionButton={clickDirectionButton} />
           ) : (
