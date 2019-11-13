@@ -26,7 +26,6 @@ export const moveAirplaneAction = direction => ({
   direction
 });
 
-export const moveObstacleAction = position => ({
-  type: OBSTACLE_MOVING,
-  position
+export const moveObstacleAction = () => ({
+  type: OBSTACLE_MOVING
 });

@@ -16,19 +16,27 @@ export const initState = {
     width: 8,
     height: 7
   },
-  obstacle: {
+  obstacles: []
+};
+
+for (let i = 0; i < 15; i++) {
+  const sampleObstacle = {
     color: 'green',
-    x: 46,
-    y: 0,
+    x: 1,
+    y: 1,
     width: 8,
     height: 7
-  }
-};
+  };
+  sampleObstacle.x *= Math.floor(Math.random() * 10) * 10;
+  sampleObstacle.y *= -Math.floor(Math.random() * 10) * 10;
+
+  initState.obstacles.push(sampleObstacle);
+}
 
 export default combineReducers({
   isMobileDevice: checkIsMobileDeviceReducer,
   hasAnotherDevice: connectDeviceReducer,
   isGameStarted: gameStartReducer,
   airplane: moveAirplaneReducer,
-  obstacle: moveObstacleReducer
+  obstacles: moveObstacleReducer
 });

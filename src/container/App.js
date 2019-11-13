@@ -17,7 +17,7 @@ const mapStateToProps = state => ({
   hasAnotherDevice: state.hasAnotherDevice,
   isGameStarted: state.isGameStarted,
   airplane: state.airplane,
-  obstacle: state.obstacle
+  obstacles: state.obstacles
 });
 
 const mapDispatchToProps = dispatch => {
@@ -49,14 +49,10 @@ const mapDispatchToProps = dispatch => {
     clickDirectionButton: direction => {
       moveAirplane(direction);
     },
-    changeObstaclePosition: position => {
-      console.log('change obstacle position!');
-      dispatch(moveObstacleAction(position));
+    changeObstaclePosition: () => {
+      dispatch(moveObstacleAction());
     }
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

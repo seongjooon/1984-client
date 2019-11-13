@@ -7,10 +7,7 @@ class Game extends Component {
   componentDidMount() {
     const { changeObstaclePosition } = this.props;
 
-    setInterval(() => {
-      console.log('interval');
-      changeObstaclePosition();
-    }, 2000);
+    setInterval(changeObstaclePosition, 100);
   }
 
   _handleClick = () => {
@@ -21,34 +18,34 @@ class Game extends Component {
     onClickStartButton(true);
   };
 
-  render() {
+  render = () => {
     const {
       isMobileDevice,
       isGameStarted,
       clickDirectionButton,
       airplane,
-      obstacle
+      obstacles
     } = this.props;
 
     return (
-      <div className='Game'>
+      <div className="Game">
         {!isGameStarted ? (
           isMobileDevice ? (
             <GameMobileView onClickDirectionButton={clickDirectionButton} />
           ) : (
-            <GameWebView airplane={airplane} obstacle={obstacle} />
+            <GameWebView airplane={airplane} obstacles={obstacles} />
           )
         ) : (
           <img
-            className='start-button'
+            className="start-button"
             onClick={this._handleClick}
-            alt='start button'
-            src='https://cdn.onlinewebfonts.com/svg/img_488970.png'
+            alt="start button"
+            src="https://cdn.onlinewebfonts.com/svg/img_488970.png"
           />
         )}
       </div>
     );
-  }
+  };
 }
 
 export default Game;

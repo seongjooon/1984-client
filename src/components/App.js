@@ -18,7 +18,7 @@ class App extends Component {
       isGameStarted,
       clickDirectionButton,
       airplane,
-      obstacle,
+      obstacles,
       changeObstaclePosition
     } = this.props;
 
@@ -43,7 +43,7 @@ class App extends Component {
                   isGameStarted={isGameStarted}
                   clickDirectionButton={clickDirectionButton}
                   airplane={airplane}
-                  obstacle={obstacle}
+                  obstacles={obstacles}
                   changeObstaclePosition={changeObstaclePosition}
                 />
               ) : (
