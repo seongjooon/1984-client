@@ -61,7 +61,11 @@ class GameWebView extends Component {
   };
 
   _updateGame = unitList => {
-  
+    for (let i = 1; i < unitList.length; i++) {
+      if (this._crashWith([unitList[0], unitList[i]])) {
+        this._stopGame();
+      }
+    }
     this._clearCanvas();
 
     for (let i = 0; i < unitList.length; i++) {
