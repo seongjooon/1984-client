@@ -24,10 +24,10 @@
         color: white;
       }
       .score-number {
-        padding-top: 2%;
+        padding-top: 5%;
         padding-bottom: 5%;
         font-size: 4rem;
-        color: white;
+        color: #00f303;
       }
     }
     .guid-box {
@@ -50,18 +50,23 @@
           transform: translate(-50%, -50%);
           width: 100%;
           font-size: 1.2rem;
-          color: white;
+          font-weight: bold;
+          .push-image {
+            position: absolute;
+            width: 75px;
+          }
           .restart-text {
             display: inline-block;
             width: 46%;
             padding: 19% 0;
             border: 1px solid lightgray;
+            color: white;
           }
           .ranking-text {
             display: inline-block;
             padding: 19% 0;
             width: 46%;
-            border: 1px solid lightgray;
+            border: 1px solid white;
             background-color: darkgray;
           }
         }

@@ -15,8 +15,23 @@ class Modal extends Component {
           <div className="guid-box">
             <div className="sample-phone">
               <div className="guid-buttons">
-                <div className="restart-text">Restart</div>
-                <div className="ranking-text">Ranking</div>
+                <div className="restart-text">
+                  Restart
+                  <img
+                    className="push-image"
+                    alt="push"
+                    src="https://www.denacopy.be/mobile/images/touchscreen.gif"
+                  />
+                </div>
+
+                <div className="ranking-text">
+                  Ranking
+                  <img
+                    className="push-image"
+                    alt="push"
+                    src="https://www.denacopy.be/mobile/images/touchscreen.gif"
+                  />
+                </div>
               </div>
             </div>
           </div>
