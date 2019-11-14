@@ -21,7 +21,9 @@ class App extends Component {
       obstacles,
       changeObstaclePosition,
       gameOver,
-      isGameOver
+      isGameOver,
+      openRankingPage,
+      isRankingOpened
     } = this.props;
 
     return (
@@ -49,6 +51,8 @@ class App extends Component {
                   changeObstaclePosition={changeObstaclePosition}
                   gameOver={gameOver}
                   isGameOver={isGameOver}
+                  openRankingPage={openRankingPage}
+                  isRankingOpened={isRankingOpened}
                 />
               ) : (
                 <Signin

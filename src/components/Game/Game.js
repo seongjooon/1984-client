@@ -4,11 +4,21 @@ import GameMobileView from '../Mobile/GameMobileView';
 import GameWebView from '../Web/GameWebView';
 
 class Game extends Component {
+  constructor() {
+    super();
+    this.intervalFallingObstacle = null;
+    this.state = { isClear: false };
+  }
   componentDidMount() {
     const { changeObstaclePosition } = this.props;
 
-    setInterval(changeObstaclePosition, 50);
+    this.intervalFallingObstacle = setInterval(changeObstaclePosition, 50);
   }
+
+  
+  _clearObstacleInterval = () => {
+    clearInterval(this.intervalFallingObstacle);
+  };
 
   _handleClick = () => {
     const { onLoad, onClickStartButton } = this.props;
@@ -26,7 +36,9 @@ class Game extends Component {
       airplane,
       obstacles,
       gameOver,
-      isGameOver
+      isGameOver,
+      openRankingPage,
+      isRankingOpened
     } = this.props;
 
     return (
@@ -36,12 +48,15 @@ class Game extends Component {
             <GameMobileView
               onClickDirectionButton={clickDirectionButton}
               isGameOver={isGameOver}
+              openRankingPage={openRankingPage}
             />
           ) : (
             <GameWebView
               airplane={airplane}
               obstacles={obstacles}
               gameOver={gameOver}
+              isRankingOpened={isRankingOpened}
+              clearObstacleInterval={this._clearObstacleInterval}
             />
           )
         ) : (

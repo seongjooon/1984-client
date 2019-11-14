@@ -1,17 +1,24 @@
 import React, { Component } from 'react';
+import CountUp from 'react-countup';
 import './Modal.scss';
 
 class Modal extends Component {
   render = () => {
-    const { score } = this.props;
+    const { score, isRankingOpened } = this.props;
 
     return (
       <div className="modals-background">
         <div className="modal-body">
-          <div className="score-box">
-            <div className="score-text">Your Score </div>
-            <div className="score-number">{score}</div>
-          </div>
+          {isRankingOpened ? (
+            <div className="ranking-box">Ranking</div>
+          ) : (
+            <div className="score-box">
+              <div className="score-text">Your Score </div>
+              <div className="score-number">
+                <CountUp start={0} end={Number(score)} />
+              </div>
+            </div>
+          )}
           <div className="guid-box">
             <div className="sample-phone">
               <div className="guid-buttons">

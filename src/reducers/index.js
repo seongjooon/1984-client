@@ -5,6 +5,7 @@ import { gameStartReducer } from './gameStartReducer';
 import { moveAirplaneReducer } from './moveAirplaneReducer';
 import { moveObstacleReducer } from './moveObstacleReducer';
 import { gameOverReducer } from './gameOverReducer';
+import { openRankingReducer } from './openRankingReducer';
 import { OBSTACLE_LIST } from '../constants/constant';
 
 export const initState = {
@@ -12,6 +13,7 @@ export const initState = {
   hasAnotherDevice: false,
   isGameStarted: false,
   isGameOver: false,
+  isRankingOpened: false,
   airplane: {
     color: 'red',
     x: 46,
@@ -28,5 +30,6 @@ export default combineReducers({
   isGameStarted: gameStartReducer,
   airplane: moveAirplaneReducer,
   obstacles: moveObstacleReducer,
-  isGameOver: gameOverReducer
+  isGameOver: gameOverReducer,
+  isRankingOpened: openRankingReducer
 });

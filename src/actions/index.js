@@ -4,7 +4,8 @@ import {
   IS_GAME_START,
   AIRPLANE_MOVING,
   OBSTACLE_MOVING,
-  IS_GAME_OVER
+  IS_GAME_OVER,
+  RANKING_OPEN
 } from '../constants/actioncTypes';
 
 export const connectDeviceAction = hasAnotherDevice => ({
@@ -33,4 +34,8 @@ export const moveObstacleAction = () => ({
 
 export const stopGameAction = () => ({
   type: IS_GAME_OVER
+});
+
+export const openRankingAction = () => ({
+  type: RANKING_OPEN
 });

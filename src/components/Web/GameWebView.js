@@ -22,7 +22,9 @@ class GameWebView extends Component {
   componentDidUpdate() {
     const { airplane, obstacles } = this.props;
 
-    this._updateGame([airplane, ...obstacles]);
+    if (!this.state.isModalOpen) {
+      this._updateGame([airplane, ...obstacles]);
+    }
   }
 
   _clearCanvas = () => {
@@ -57,18 +59,18 @@ class GameWebView extends Component {
   };
 
   _stopGame = () => {
-    const { gameOver } = this.props;
+    const { gameOver, clearObstacleInterval } = this.props;
     const score = this.scoreRef.current.firstElementChild.innerText;
 
-    gameOver();
+    clearObstacleInterval();
     this.setState({ score, isModalOpen: true });
+    gameOver();
   };
 
   _updateGame = unitList => {
     for (let i = 1; i < unitList.length; i++) {
       if (this._crashWith([unitList[0], unitList[i]])) {
         this._stopGame();
-        return;
       }
     }
     this._clearCanvas();
@@ -79,6 +81,7 @@ class GameWebView extends Component {
   };
 
   render = () => {
+    const { isRankingOpened } = this.props;
     const { score, isModalOpen } = this.state;
 
     return (
@@ -93,7 +96,9 @@ class GameWebView extends Component {
         <div className="count-up-box" ref={this.scoreRef}>
           <CountUp className="count-up" start={0} end={10000} duration={8000} />
         </div>
-        {!isModalOpen && <Modal score={score} />}
+        {isModalOpen && (
+          <Modal score={score} isRankingOpened={isRankingOpened} />
+        )}
       </div>
     );
   };

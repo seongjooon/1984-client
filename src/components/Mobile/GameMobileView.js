@@ -27,10 +27,9 @@ class GameMobileView extends Component {
 
   _handleDirectionButtonClick = direction => {
     const { onClickDirectionButton } = this.props;
+
     onClickDirectionButton(direction);
-
     this._getSelectedVoice(direction, 'direction');
-
     this.setState({ [`is${direction}ButtonClicked`]: true });
     setTimeout(
       () => this.setState({ [`is${direction}ButtonClicked`]: false }),
@@ -39,7 +38,12 @@ class GameMobileView extends Component {
   };
 
   _handleResultButtonClick = direction => {
+    const { openRankingPage } = this.props;
     this._getSelectedVoice(direction, 'result');
+    if (direction === 'Right') {
+      openRankingPage();
+    }
+
     this.setState({ [`is${direction}ButtonClicked`]: true });
     setTimeout(
       () => this.setState({ [`is${direction}ButtonClicked`]: false }),
@@ -53,7 +57,7 @@ class GameMobileView extends Component {
 
     return (
       <div className="mobile-buttons">
-        {!isGameOver ? (
+        {isGameOver ? (
           <>
             <Link
               to="/home"

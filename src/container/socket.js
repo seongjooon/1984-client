@@ -3,7 +3,8 @@ import {
   connectDeviceAction,
   startGameAction,
   moveAirplaneAction,
-  stopGameAction
+  stopGameAction,
+  openRankingAction
 } from '../actions/index';
 
 export const connectDevice = token => socket.emit('connect device', token);
@@ -14,6 +15,8 @@ export const moveAirplane = direction =>
   socket.emit('move airplane', direction);
 
 export const stopGame = () => socket.emit('game over');
+
+export const opoenRanking = () => socket.emit('open ranking');
 
 const configureSocket = dispatch => {
   socket.on('connecting message', hasAnotherDevice => {
@@ -28,8 +31,12 @@ const configureSocket = dispatch => {
     dispatch(moveAirplaneAction(direction));
   });
 
-  socket.on('game over', () => {
+  socket.on('game stop', () => {
     dispatch(stopGameAction());
+  });
+
+  socket.on('ranking open', () => {
+    dispatch(openRankingAction());
   });
 
   socket.on('disconnect', () => {

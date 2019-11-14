@@ -7,9 +7,13 @@ import configureSocket, {
   connectDevice,
   startGame,
   moveAirplane,
-  stopGame
+  stopGame,
+  opoenRanking
 } from './socket';
-import { checkIsMobileDevice, moveObstacleAction } from '../actions/index';
+import {
+  checkIsMobileDevice,
+  moveObstacleAction
+} from '../actions/index';
 
 export const socket = io.connect(SERVER_URL, { transports: ['websocket'] });
 
@@ -19,7 +23,8 @@ const mapStateToProps = state => ({
   isGameStarted: state.isGameStarted,
   airplane: state.airplane,
   obstacles: state.obstacles,
-  isGameOver: state.isGameOver
+  isGameOver: state.isGameOver,
+  isRankingOpened: state.isRankingOpened
 });
 
 const mapDispatchToProps = dispatch => {
@@ -56,6 +61,9 @@ const mapDispatchToProps = dispatch => {
     },
     gameOver: () => {
       stopGame();
+    },
+    openRankingPage: () => {
+      opoenRanking();
     }
   };
 };
