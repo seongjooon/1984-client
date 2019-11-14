@@ -6,10 +6,29 @@ import Signin from './Sign/Signin';
 import Game from './Game/Game';
 
 class App extends Component {
+  componentDidMount() {
+    const { onLoad, blockMobileScreen } = this.props;
+    const checkIsMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
+    onLoad(checkIsMobileDevice);
+    if (checkIsMobileDevice === (window.innerHeight > window.innerWidth)) {
+      blockMobileScreen(checkIsMobileDevice);
+    }
+    window.addEventListener('orientationchange', () => {
+      if (checkIsMobileDevice === (window.innerHeight > window.innerWidth)) {
+        blockMobileScreen(true);
+      } else {
+        blockMobileScreen(false);
+      }
+    });
+  }
+
   render = () => {
     const {
       onLoad,
       isMobileDevice,
+      isBlockMobile,
       createUser,
       signinUser,
       signoutUser,
@@ -42,6 +61,7 @@ class App extends Component {
               hasAnotherDevice ? (
                 <Game
                   onLoad={onLoad}
+                  isBlockMobile={isBlockMobile}
                   onClickStartButton={clickStartButton}
                   isMobileDevice={isMobileDevice}
                   isGameStarted={isGameStarted}
@@ -58,6 +78,7 @@ class App extends Component {
                 <Signin
                   onLoad={onLoad}
                   isMobileDevice={isMobileDevice}
+                  isBlockMobile={isBlockMobile}
                   signinUser={signinUser}
                   signoutUser={signoutUser}
                 />

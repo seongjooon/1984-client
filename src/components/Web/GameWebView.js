@@ -99,7 +99,7 @@ class GameWebView extends Component {
         <div className="count-up-box" ref={this.scoreRef}>
           <CountUp className="count-up" start={0} end={10000} duration={8000} />
         </div>
-        {!isModalOpen && (
+        {isModalOpen && (
           <Modal score={score} isRankingOpened={isRankingOpened} />
         )}
       </div>

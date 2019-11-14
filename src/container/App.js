@@ -12,6 +12,7 @@ import configureSocket, {
 } from './socket';
 import {
   checkIsMobileDevice,
+  checkIsBlockMobile,
   moveObstacleAction
 } from '../actions/index';
 
@@ -19,6 +20,7 @@ export const socket = io.connect(SERVER_URL, { transports: ['websocket'] });
 
 const mapStateToProps = state => ({
   isMobileDevice: state.isMobileDevice,
+  isBlockMobile: state.isBlockMobile,
   hasAnotherDevice: state.hasAnotherDevice,
   isGameStarted: state.isGameStarted,
   airplane: state.airplane,
@@ -32,6 +34,9 @@ const mapDispatchToProps = dispatch => {
   return {
     onLoad: isMobileDevice => {
       dispatch(checkIsMobileDevice(isMobileDevice));
+    },
+    blockMobileScreen: isBlock => {
+      dispatch(checkIsBlockMobile(isBlock));
     },
     createUser: userData => {
       createUserAPI(userData)

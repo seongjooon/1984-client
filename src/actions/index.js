@@ -1,6 +1,7 @@
 import {
   WAIT_DEVICE,
   IS_MOBILE_DEVICE,
+  IS_BLOCK_MOBILE,
   IS_GAME_START,
   AIRPLANE_MOVING,
   OBSTACLE_MOVING,
@@ -16,6 +17,11 @@ export const connectDeviceAction = hasAnotherDevice => ({
 export const checkIsMobileDevice = isMobileDevice => ({
   type: IS_MOBILE_DEVICE,
   isMobileDevice
+});
+
+export const checkIsBlockMobile = isBlock => ({
+  type: IS_BLOCK_MOBILE,
+  isBlock
 });
 
 export const startGameAction = isStart => ({

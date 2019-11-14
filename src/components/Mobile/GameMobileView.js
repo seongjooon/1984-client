@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './GameMobileView.scss';
+import BlockMobile from '../BlockMobile/BlockMobile';
 
 class GameMobileView extends Component {
   constructor() {
@@ -52,52 +53,58 @@ class GameMobileView extends Component {
   };
 
   render = () => {
-    const { isGameOver } = this.props;
+    const { isBlockMobile, isGameOver } = this.props;
     const { isLeftButtonClicked, isRightButtonClicked } = this.state;
 
     return (
-      <div className="mobile-buttons">
-        {isGameOver ? (
-          <>
-            <Link
-              to="/home"
-              className={`button restart-button ${
-                isLeftButtonClicked ? 'flicker' : ''
-              }`}
-              onMouseDown={() => this._handleResultButtonClick('Left')}
-            >
-              Restart
-            </Link>
-            <div
-              className={`button ranking-button ${
-                isRightButtonClicked ? 'flicker' : ''
-              }`}
-              onMouseDown={() => this._handleResultButtonClick('Right')}
-            >
-              Ranking
-            </div>{' '}
-          </>
+      <>
+        {isBlockMobile ? (
+          <BlockMobile />
         ) : (
-          <>
-            <div
-              className={`button left-button ${
-                isLeftButtonClicked ? 'flicker' : ''
-              }`}
-              onMouseDown={() => this._handleDirectionButtonClick('Left')}
-            >
-              L
-            </div>
-            <div
-              className={`button right-button ${
-                isRightButtonClicked ? 'flicker' : ''
-              }`}
-              onMouseDown={() => this._handleDirectionButtonClick('Right')}
-            >
-              R
-            </div>
-          </>
+          <div className="mobile-buttons">
+            {isGameOver ? (
+              <>
+                <Link
+                  to="/home"
+                  className={`button restart-button ${
+                    isLeftButtonClicked ? 'flicker' : ''
+                  }`}
+                  onMouseDown={() => this._handleResultButtonClick('Left')}
+                >
+                  Restart
+                </Link>
+                <div
+                  className={`button ranking-button ${
+                    isRightButtonClicked ? 'flicker' : ''
+                  }`}
+                  onMouseDown={() => this._handleResultButtonClick('Right')}
+                >
+                  Ranking
+                </div>{' '}
+              </>
+            ) : (
+              <>
+                <div
+                  className={`button left-button ${
+                    isLeftButtonClicked ? 'flicker' : ''
+                  }`}
+                  onMouseDown={() => this._handleDirectionButtonClick('Left')}
+                >
+                  L
+                </div>
+                <div
+                  className={`button right-button ${
+                    isRightButtonClicked ? 'flicker' : ''
+                  }`}
+                  onMouseDown={() => this._handleDirectionButtonClick('Right')}
+                >
+                  R
+                </div>
+              </>
+            )}
+          </div>
         )}
-      </div>
+      </>
     );
   };
 }

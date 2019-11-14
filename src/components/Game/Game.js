@@ -31,6 +31,7 @@ class Game extends Component {
   render = () => {
     const {
       isMobileDevice,
+      isBlockMobile,
       isGameStarted,
       clickDirectionButton,
       airplane,
@@ -43,9 +44,10 @@ class Game extends Component {
 
     return (
       <div className="Game">
-        {!isGameStarted ? (
+        {isGameStarted ? (
           isMobileDevice ? (
             <GameMobileView
+              isBlockMobile={isBlockMobile}
               onClickDirectionButton={clickDirectionButton}
               isGameOver={isGameOver}
               openRankingPage={openRankingPage}

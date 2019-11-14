@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { checkIsMobileDeviceReducer } from './checkIsMobileDeviceReducer';
+import { checkIsBlockMobileReducer } from './checkIsBlockMobileReducer';
 import { connectDeviceReducer } from './connectDeviceReducer';
 import { gameStartReducer } from './gameStartReducer';
 import { moveAirplaneReducer } from './moveAirplaneReducer';
@@ -10,6 +11,7 @@ import { OBSTACLE_LIST } from '../constants/constant';
 
 export const initState = {
   isMobileDevice: false,
+  isBlockMobile: false,
   hasAnotherDevice: false,
   isGameStarted: false,
   isGameOver: false,
@@ -26,6 +28,7 @@ export const initState = {
 
 export default combineReducers({
   isMobileDevice: checkIsMobileDeviceReducer,
+  isBlockMobile: checkIsBlockMobileReducer,
   hasAnotherDevice: connectDeviceReducer,
   isGameStarted: gameStartReducer,
   airplane: moveAirplaneReducer,
