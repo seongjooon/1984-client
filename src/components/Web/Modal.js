@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CountUp from 'react-countup';
 import './Modal.scss';
+import Finger from './pressing_finger.gif';
 
 class Modal extends Component {
   render = () => {
@@ -15,7 +16,7 @@ class Modal extends Component {
             <div className="score-box">
               <div className="score-text">Your Score </div>
               <div className="score-number">
-                <CountUp start={0} end={Number(score)} />
+                <CountUp start={0} end={score} />
               </div>
             </div>
           )}
@@ -24,20 +25,12 @@ class Modal extends Component {
               <div className="guid-buttons">
                 <div className="restart-text">
                   Restart
-                  <img
-                    className="push-image"
-                    alt="push"
-                    src="https://www.denacopy.be/mobile/images/touchscreen.gif"
-                  />
+                  <img className="push-image" alt="push" src={Finger} />
                 </div>
 
                 <div className="ranking-text">
                   Ranking
-                  <img
-                    className="push-image"
-                    alt="push"
-                    src="https://www.denacopy.be/mobile/images/touchscreen.gif"
-                  />
+                  <img className="push-image" alt="push" src={Finger} />
                 </div>
               </div>
             </div>

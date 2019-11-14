@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Game.scss';
 import GameMobileView from '../Mobile/GameMobileView';
 import GameWebView from '../Web/GameWebView';
+import StartButton from './start_button.png';
 
 class Game extends Component {
   constructor() {
@@ -15,7 +16,6 @@ class Game extends Component {
     this.intervalFallingObstacle = setInterval(changeObstaclePosition, 50);
   }
 
-  
   _clearObstacleInterval = () => {
     clearInterval(this.intervalFallingObstacle);
   };
@@ -43,7 +43,7 @@ class Game extends Component {
 
     return (
       <div className="Game">
-        {isGameStarted ? (
+        {!isGameStarted ? (
           isMobileDevice ? (
             <GameMobileView
               onClickDirectionButton={clickDirectionButton}
@@ -64,7 +64,7 @@ class Game extends Component {
             className="start-button"
             onClick={this._handleClick}
             alt="start button"
-            src="https://cdn.onlinewebfonts.com/svg/img_488970.png"
+            src={StartButton}
           />
         )}
       </div>

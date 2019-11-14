@@ -4,8 +4,7 @@
   align-items: center;
   width: 100%;
   height: 100vh;
-  background: url('https://66.media.tumblr.com/0c7f18b97c37dc09ec74109da7db91c2/tumblr_njcroeXzCg1sqc6kuo1_500.gifv')
-    no-repeat center / cover;
+  background: url('./Signin.webp') no-repeat center / cover;
   .signin-box {
     display: flex;
     justify-content: center;
@@ -104,7 +103,7 @@
   width: 100%;
   height: 100vh;
   background-color: black;
-  background: url('https://missingperspective.files.wordpress.com/2014/10/radar-o.gif')
+  background: url('./wait.gif')
     no-repeat center / cover;
   color: white;
   .wait-text {

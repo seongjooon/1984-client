@@ -9,6 +9,10 @@ import App from './container/App';
 import * as serviceWorker from './serviceWorker';
 import rootReducer from './reducers';
 
+import Bugcide from 'bugcide';
+
+new Bugcide().init({ projectToken: '1984-bj30A' });
+
 const store = createStore(
   rootReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()

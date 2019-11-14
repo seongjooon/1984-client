@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './GameWebView.scss';
 import CountUp from 'react-countup';
 import Modal from './Modal';
+// import { rankingAPI } from '../../Api/postApi';
 
 class GameWebView extends Component {
   constructor(props) {
@@ -60,8 +61,10 @@ class GameWebView extends Component {
 
   _stopGame = () => {
     const { gameOver, clearObstacleInterval } = this.props;
-    const score = this.scoreRef.current.firstElementChild.innerText;
+    const score = Number(this.scoreRef.current.firstElementChild.innerText);
 
+    // const rankingData = { nickname, score };
+    // rankingAPI(rankingData);
     clearObstacleInterval();
     this.setState({ score, isModalOpen: true });
     gameOver();
@@ -96,7 +99,7 @@ class GameWebView extends Component {
         <div className="count-up-box" ref={this.scoreRef}>
           <CountUp className="count-up" start={0} end={10000} duration={8000} />
         </div>
-        {isModalOpen && (
+        {!isModalOpen && (
           <Modal score={score} isRankingOpened={isRankingOpened} />
         )}
       </div>

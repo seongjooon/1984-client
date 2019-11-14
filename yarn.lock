@@ -2281,6 +2281,11 @@ buffer@^4.3.0:
     ieee754 "^1.1.4"
     isarray "^1.0.0"
 
+bugcide@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/bugcide/-/bugcide-1.0.3.tgz#df2242b83513a3c3a7bb2d3d5c3b4c82ec40e314"
+  integrity sha512-ByqrsPFPFYhVoNjJRemn6QQnWL/OAHv7Jz70l5sZ0IvJWKyoz1Y/337vH6Y+jNUEjq6RRc8LJwRl6phlwxCJAw==
+
 builtin-status-codes@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/builtin-status-codes/-/builtin-status-codes-3.0.0.tgz#85982878e21b98e1c66425e03d0174788f569ee8"

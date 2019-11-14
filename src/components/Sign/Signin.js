@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Signin.scss';
+import RerenderButton from './rerender_button.png'
 
 class Signin extends Component {
   constructor(props) {
@@ -50,13 +51,13 @@ class Signin extends Component {
   _showBolckMobileScreen = () => {
     const { isRerenderClicked } = this.state;
     return (
-      <div className='block-mobile-screen'>
-        <div className='rerender-text'>가로모드에서 눌러주세요</div>
+      <div className="block-mobile-screen">
+        <div className="rerender-text">가로모드에서 눌러주세요</div>
         <img
           className={`rerender-button ${isRerenderClicked ? 'rotating' : ''}`}
           onClick={this._handleClick}
-          alt='rerender button'
-          src='https://loading.io/spinners/flat-reload/index.flat-ajax-syncing-loading-icon.png'
+          alt="rerender button"
+          src={RerenderButton}
         />
       </div>
     );

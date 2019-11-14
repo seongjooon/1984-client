@@ -23,3 +23,10 @@ export const signoutUserAPI = userData => {
     .then(res => res)
     .catch(err => console.log(err));
 };
+
+export const rankingAPI = rankingData => {
+  return axios
+    .post(SERVER_API + '/ranking')
+    .then(res => res)
+    .catch(err => console.log(err));
+};
