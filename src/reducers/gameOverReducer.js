@@ -1,4 +1,4 @@
-import { IS_GAME_OVER } from '../constants/actioncTypes';
+import { IS_GAME_OVER } from '../constants/actionTypes';
 import { initState } from './index';
 
 export const gameOverReducer = (state = initState.isGameOver, action) => {

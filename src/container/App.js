@@ -8,7 +8,8 @@ import configureSocket, {
   startGame,
   moveAirplane,
   stopGame,
-  opoenRanking
+  openRanking,
+  restartGame
 } from './socket';
 import {
   checkIsMobileDevice,
@@ -68,7 +69,10 @@ const mapDispatchToProps = dispatch => {
       stopGame();
     },
     openRankingPage: () => {
-      opoenRanking();
+      openRanking();
+    },
+    clickRestartButton: () => {
+      restartGame();
     }
   };
 };

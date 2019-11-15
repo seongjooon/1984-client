@@ -1,4 +1,4 @@
-import { IS_BLOCK_MOBILE } from '../constants/actioncTypes';
+import { IS_BLOCK_MOBILE } from '../constants/actionTypes';
 import { initState } from './index';
 
 export const checkIsBlockMobileReducer = (

@@ -1,6 +1,8 @@
 import { getRandomNumber } from '../utils';
 
-const isMobileDvice = window.innerHeight < 460 || window.innerHeight < 600;
+const isMobileDvice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
 
 export const SERVER_API = isMobileDvice
   ? 'http://192.168.0.68:4000'

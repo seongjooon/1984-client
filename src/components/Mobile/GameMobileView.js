@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import './GameMobileView.scss';
 import BlockMobile from '../BlockMobile/BlockMobile';
 
@@ -39,7 +38,11 @@ class GameMobileView extends Component {
   };
 
   _handleResultButtonClick = direction => {
-    const { openRankingPage } = this.props;
+    const { openRankingPage, clickRestartButton } = this.props;
+    if (direction === 'Left') {
+      clickRestartButton();
+      window.location.reload();
+    }
     this._getSelectedVoice(direction, 'result');
     if (direction === 'Right') {
       openRankingPage();
@@ -64,15 +67,14 @@ class GameMobileView extends Component {
           <div className="mobile-buttons">
             {isGameOver ? (
               <>
-                <Link
-                  to="/home"
+                <div
                   className={`button restart-button ${
                     isLeftButtonClicked ? 'flicker' : ''
                   }`}
                   onMouseDown={() => this._handleResultButtonClick('Left')}
                 >
                   Restart
-                </Link>
+                </div>
                 <div
                   className={`button ranking-button ${
                     isRightButtonClicked ? 'flicker' : ''

@@ -1,4 +1,4 @@
-import { WAIT_DEVICE } from '../constants/actioncTypes';
+import { WAIT_DEVICE } from '../constants/actionTypes';
 import { initState } from './index';
 
 export const connectDeviceReducer = (state = initState.hasAnotherDevice, action) => {

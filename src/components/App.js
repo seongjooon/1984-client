@@ -16,7 +16,7 @@ class App extends Component {
       blockMobileScreen(checkIsMobileDevice);
     }
     window.addEventListener('orientationchange', () => {
-      if (checkIsMobileDevice === (window.innerHeight > window.innerWidth)) {
+      if (checkIsMobileDevice === (window.innerHeight < window.innerWidth)) {
         blockMobileScreen(true);
       } else {
         blockMobileScreen(false);
@@ -42,7 +42,8 @@ class App extends Component {
       gameOver,
       isGameOver,
       openRankingPage,
-      isRankingOpened
+      isRankingOpened,
+      clickRestartButton
     } = this.props;
 
     return (
@@ -73,6 +74,7 @@ class App extends Component {
                   isGameOver={isGameOver}
                   openRankingPage={openRankingPage}
                   isRankingOpened={isRankingOpened}
+                  clickRestartButton={clickRestartButton}
                 />
               ) : (
                 <Signin

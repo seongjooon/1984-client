@@ -16,15 +16,17 @@ export const moveAirplane = direction =>
 
 export const stopGame = () => socket.emit('game over');
 
-export const opoenRanking = () => socket.emit('open ranking');
+export const openRanking = () => socket.emit('open ranking');
+
+export const restartGame = () => socket.emit('restart game');
 
 const configureSocket = dispatch => {
   socket.on('connecting message', hasAnotherDevice => {
     dispatch(connectDeviceAction(hasAnotherDevice));
   });
 
-  socket.on('game start', isStart => {
-    dispatch(startGameAction(isStart));
+  socket.on('game start', isClicked => {
+    dispatch(startGameAction(isClicked));
   });
 
   socket.on('airplane moving', direction => {
@@ -37,6 +39,10 @@ const configureSocket = dispatch => {
 
   socket.on('ranking open', () => {
     dispatch(openRankingAction());
+  });
+
+  socket.on('game restart', () => {
+    window.location.reload();
   });
 
   socket.on('disconnect', () => {

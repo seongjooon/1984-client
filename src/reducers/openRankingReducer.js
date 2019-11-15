@@ -1,4 +1,4 @@
-import { RANKING_OPEN } from '../constants/actioncTypes';
+import { RANKING_OPEN } from '../constants/actionTypes';
 import { initState } from './index';
 
 export const openRankingReducer = (

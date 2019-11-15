@@ -7,7 +7,7 @@ import {
   OBSTACLE_MOVING,
   IS_GAME_OVER,
   RANKING_OPEN
-} from '../constants/actioncTypes';
+} from '../constants/actionTypes';
 
 export const connectDeviceAction = hasAnotherDevice => ({
   type: WAIT_DEVICE,

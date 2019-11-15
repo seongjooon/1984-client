@@ -1,4 +1,4 @@
-import { AIRPLANE_MOVING } from '../constants/actioncTypes';
+import { AIRPLANE_MOVING } from '../constants/actionTypes';
 import { initState } from './index';
 
 export const moveAirplaneReducer = (state = initState.airplane, action) => {

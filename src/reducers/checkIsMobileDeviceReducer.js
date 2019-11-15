@@ -1,4 +1,4 @@
-import { IS_MOBILE_DEVICE } from '../constants/actioncTypes';
+import { IS_MOBILE_DEVICE } from '../constants/actionTypes';
 import { initState } from './index';
 
 export const checkIsMobileDeviceReducer = (

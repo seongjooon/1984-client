@@ -13,7 +13,7 @@ class Game extends Component {
   componentDidMount() {
     const { changeObstaclePosition } = this.props;
 
-    this.intervalFallingObstacle = setInterval(changeObstaclePosition, 50);
+    this.intervalFallingObstacle = setInterval(changeObstaclePosition, 100);
   }
 
   _clearObstacleInterval = () => {
@@ -21,10 +21,8 @@ class Game extends Component {
   };
 
   _handleClick = () => {
-    const { onLoad, onClickStartButton } = this.props;
-    const checkIsMobileDevice = window.innerHeight < 460;
+    const { onClickStartButton } = this.props;
 
-    onLoad(checkIsMobileDevice);
     onClickStartButton(true);
   };
 
@@ -39,7 +37,8 @@ class Game extends Component {
       gameOver,
       isGameOver,
       openRankingPage,
-      isRankingOpened
+      isRankingOpened,
+      clickRestartButton
     } = this.props;
 
     return (
@@ -51,6 +50,7 @@ class Game extends Component {
               onClickDirectionButton={clickDirectionButton}
               isGameOver={isGameOver}
               openRankingPage={openRankingPage}
+              clickRestartButton={clickRestartButton}
             />
           ) : (
             <GameWebView

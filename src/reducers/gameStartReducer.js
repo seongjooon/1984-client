@@ -1,4 +1,4 @@
-import { IS_GAME_START } from '../constants/actioncTypes';
+import { IS_GAME_START } from '../constants/actionTypes';
 import { initState } from './index';
 
 export const gameStartReducer = (state = initState.isGameStarted, action) => {
