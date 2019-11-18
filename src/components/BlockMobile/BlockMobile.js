@@ -10,13 +10,11 @@ class BlockMobile extends Component {
     };
   }
   render = () => {
-    const { isRerenderClicked } = this.state;
-
     return (
       <div className="block-mobile-screen">
         <div className="rerender-text">가로모드만 지원합니다</div>
         <img
-          className={`rerender-button ${isRerenderClicked ? 'rotating' : ''}`}
+          className={`rerender-button rotating`}
           onClick={() => {
             this.setState({ isRerenderClicked: true });
           }}

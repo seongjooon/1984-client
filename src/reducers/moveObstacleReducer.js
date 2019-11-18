@@ -8,13 +8,13 @@ export const moveObstacleReducer = (state = initState.obstacles, action) => {
     case OBSTACLE_MOVING:
       for (let i = 0; i < state.length; i++) {
         const recreatedObstacleSize = getRandomNumber(30);
-        if (state[i].y >= 90) {
-          state[i].y = -5;
-          state[i].x = getRandomNumber(82);
-          state[i].width = recreatedObstacleSize / 2;
-          state[i].height = recreatedObstacleSize / 2;
+        if (state[i].y >= 2700) {
+          state[i].y = -150;
+          state[i].x = getRandomNumber(82 * 30);
+          state[i].width = (recreatedObstacleSize * 30) / 2;
+          state[i].height = (recreatedObstacleSize * 30) / 2;
         }
-        state[i].y += getRandomNumber(FALLING_OBSTACLE);
+        state[i].y += getRandomNumber(FALLING_OBSTACLE) * 7;
       }
       return [...state];
     default:

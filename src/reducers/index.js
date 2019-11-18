@@ -8,6 +8,7 @@ import { moveObstacleReducer } from './moveObstacleReducer';
 import { gameOverReducer } from './gameOverReducer';
 import { openRankingReducer } from './openRankingReducer';
 import { OBSTACLE_LIST } from '../constants/constant';
+import Airplane from './airplane.png';
 
 export const initState = {
   isMobileDevice: false,
@@ -17,11 +18,11 @@ export const initState = {
   isGameOver: false,
   isRankingOpened: false,
   airplane: {
-    color: 'red',
-    x: 46,
-    y: 90,
-    width: 8,
-    height: 7
+    src: Airplane,
+    x: 1380,
+    y: 2700,
+    width: 300,
+    height: 270
   },
   obstacles: OBSTACLE_LIST
 };

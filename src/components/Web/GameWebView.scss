@@ -14,38 +14,41 @@
     border-radius: 4px;
     background-color: rgba(0, 0, 0, 0.8);
   }
-  .main-viewer {
-    position: relative;
-    display: flex;
-    width: 100vh;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    .obstacle-box {
-      position: absolute;
-      width: 200px;
-      height: 100%;
-      border: 1px solid red;
-      .obstacle-unit {
-        width: 100%;
+  .canvas-wrapper {
+    // width: 500px;
+    // height: 500px;
+    .main-viewer {
+      width: 100vh;
+      position: relative;
+      display: flex;
+      background-color: rgba(0, 0, 0, 0.5);
+      .obstacle-box {
+        position: absolute;
+        width: 200px;
         height: 100%;
-        .obstacle-controller {
+        border: 1px solid red;
+        .obstacle-unit {
           width: 100%;
-          border: 1px solid blue;
-        }
-        .git-kraken {
-          font-size: 200px;
+          height: 100%;
+          .obstacle-controller {
+            width: 100%;
+            border: 1px solid blue;
+          }
+          .git-kraken {
+            font-size: 200px;
+          }
         }
       }
-    }
-    .airplane-area {
-      display: flex;
-      align-self: flex-end;
-      width: 100%;
-      height: 10%;
-      background-color: rgba(0, 0, 0, 0.4);
-      .airplane {
-        font-size: 5rem;
-        color: #00f303;
+      .airplane-area {
+        display: flex;
+        align-self: flex-end;
+        width: 100%;
+        height: 10%;
+        background-color: rgba(0, 0, 0, 0.4);
+        .airplane {
+          font-size: 5rem;
+          color: #00f303;
+        }
       }
     }
   }

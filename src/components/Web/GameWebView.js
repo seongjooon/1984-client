@@ -10,7 +10,7 @@ class GameWebView extends Component {
     this.canvasRef = React.createRef();
     this.scoreRef = React.createRef();
     this.ctx = null;
-    this.state = { score: 0, isModalOpen: false };
+    this.state = { score: 0, isModalOpen: false, countupEndNumber: 10000 };
   }
 
   componentDidMount() {
@@ -29,12 +29,16 @@ class GameWebView extends Component {
   }
 
   _clearCanvas = () => {
-    this.ctx.clearRect(0, 0, 100, 500);
+    this.ctx.clearRect(0, 0, 3000, 15000);
   };
 
   _update = unit => {
-    this.ctx.fillStyle = unit.color;
-    this.ctx.fillRect(unit.x, unit.y, unit.width, unit.height);
+    const imageData = new Image();
+    imageData.src = unit.src;
+
+    this.ctx.drawImage(imageData, unit.x, unit.y, unit.width, unit.height);
+    // this.ctx.fillStyle = unit.color;
+    // this.ctx.fillRect(unit.x, unit.y, unit.width, unit.height);
   };
 
   _crashWith = unitList => {
@@ -66,7 +70,7 @@ class GameWebView extends Component {
     // const rankingData = { nickname, score };
     // rankingAPI(rankingData);
     clearObstacleInterval();
-    this.setState({ score, isModalOpen: true });
+    this.setState({ score, isModalOpen: true, countupEndNumber: 0 });
     gameOver();
   };
 
@@ -85,19 +89,26 @@ class GameWebView extends Component {
 
   render = () => {
     const { isRankingOpened } = this.props;
-    const { score, isModalOpen } = this.state;
+    const { score, isModalOpen, countupEndNumber } = this.state;
 
     return (
       <div className="web-game-view">
         <div className="main-logo">1984</div>
-        <canvas
-          className="main-viewer"
-          ref={this.canvasRef}
-          width={'100%'}
-          height={'100%'}
-        />
+        <div className="canvas-wrapper">
+          <canvas
+            className="main-viewer"
+            ref={this.canvasRef}
+            width={'3000px'}
+            height={'3000px'}
+          />
+        </div>
         <div className="count-up-box" ref={this.scoreRef}>
-          <CountUp className="count-up" start={0} end={10000} duration={8000} />
+          <CountUp
+            className="count-up"
+            start={0}
+            end={countupEndNumber}
+            duration={8000}
+          />
         </div>
         {isModalOpen && (
           <Modal score={score} isRankingOpened={isRankingOpened} />

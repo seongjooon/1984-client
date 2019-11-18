@@ -13,7 +13,7 @@ class Game extends Component {
   componentDidMount() {
     const { changeObstaclePosition } = this.props;
 
-    this.intervalFallingObstacle = setInterval(changeObstaclePosition, 100);
+    this.intervalFallingObstacle = setInterval(changeObstaclePosition, 20);
   }
 
   _clearObstacleInterval = () => {
