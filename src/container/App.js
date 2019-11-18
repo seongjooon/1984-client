@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import App from '../components/App';
-import { createUserAPI, signinUserAPI, signoutUserAPI } from '../Api/postApi';
+import { createUserAPI, signinUserAPI, signoutUserAPI } from '../api/postApi';
 import io from 'socket.io-client';
 import { SERVER_URL } from '../constants/constant';
 import configureSocket, {
