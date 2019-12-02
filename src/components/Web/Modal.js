@@ -8,10 +8,10 @@ class Modal extends Component {
     super();
     this.state = {
       rankingList: [
-        ['hanjuneyang', 2000],
-        ['eeroo', 1998],
-        ['nohdack', 1887],
-        ['ericimhojang', 1000],
+        ['1. hanjuneyang', 2000],
+        ['2. eeroo', 1998],
+        ['3. nohdack', 1887],
+        ['4. ericimhojang', 1000],
         ['dongdong', 999],
         ['jy.kang', 897]
       ]
