@@ -1,0 +1,16 @@
+.Game {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  .start-button {
+    width: 30%;
+    border-radius: 100%;
+    cursor: pointer;
+    &:hover {
+      background-color: #00f303;
+    }
+  }
+  
+}
